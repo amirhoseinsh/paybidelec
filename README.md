@@ -6,4 +6,5 @@ This is a package about simulation pay as a bid electricity auction.
 
 In terminal use this code for installing this package
 
-`pip install paybidelec`
+To install, simply use `pip`:
+```pip install paybidelec```
