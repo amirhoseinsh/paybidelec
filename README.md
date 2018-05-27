@@ -8,8 +8,8 @@ In terminal use this code for installing this package
 
 To install, simply use `pip`:
 
-
+```
 pip install paybidelec
-
+```
 
 this is it!
