@@ -1,4 +1,4 @@
-[![PyPI version shields.io](https://img.shields.io/pypi/v/paybidelec.svg)](https://pypi.python.org/pypi/ansicolortags/)
+[![PyPI version shields.io](https://img.shields.io/pypi/v/paybidelec.svg)](https://pypi.python.org/pypi/ansicolortags/)[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
 
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 
