@@ -28,8 +28,17 @@ Then you must define parameters as a below :
 * prices = intial price of each 
 * dispatches = maximum dispatch of each
 * costs = costs of produce electriciy of each
-* risks = behavioral risk of each 
+* risks = behavioral risk of each (between 0 - 0.8)
 * expectedReward = expected reward that they want
 
 all of these must be array
+
+```python
+ss = Production(number,prices,dispatches,costs, risks, expectedReward)
+```
+
+
+for ploting first contributor's bid during time you must write a simple code as below:
+ 
+
 
