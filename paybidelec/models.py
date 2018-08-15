@@ -18,13 +18,13 @@ class Production(object):
         self.new_price = []
         self.new_dispatch=[]
         self.a = 0
-        self.b = 0     
+        self.b = 0
         self.deltapr=[]
         self.eta = [0 , 0 ,0]
         self.s = StatisticsOP()
         rewards = []
-        for i in range(self.number):  
-            rewards.append((self.prices[i] - self.costs[i]) * self.dispatches[i]) 
+        for i in range(self.number):
+            rewards.append((self.prices[i] - self.costs[i]) * self.dispatches[i])
         self.rewards = rewards
         self.target_success_ratio = 1
         self.last_k_success_ratio = 0.8
@@ -36,8 +36,8 @@ class Production(object):
             self.deltapr.append(prices[i] - self.aveprice)
     def reward(self):
         rewards = []
-        for i in range(self.number):  
-            rewards.append((self.prices[i] - self.costs[i]) * self.dispatches[i]) 
+        for i in range(self.number):
+            rewards.append((self.prices[i] - self.costs[i]) * self.dispatches[i])
         self.rewards = rewards
         return self.rewards
     def new_price_and_dispatch(self):
@@ -52,23 +52,23 @@ class Production(object):
                 self.expectedReward[i] = (self.prices[i] - self.costs[i]) * self.dispatches[i]
                 if self.rewards[i] >= self.expectedReward[i] :
                     sigma = self.s.plus_sigma(self.risks[i], self.deltapr[i])
-                    self.eta[i] = (self.s.normal(0, sigma , self.prices[i] , self.rewards[i]))        
+                    self.eta[i] = (self.s.normal(0, sigma , self.prices[i] , self.rewards[i]))
                     self.prices[i] = self.prices[i] + self.eta[i]
-                    print self.prices
+                    # print self.prices
                 else :
                     sigma = self.s.mines_sigma(self.risks[i], self.deltapr[i])
                     self.eta[i] = (self.s.normal(0,sigma, self.prices[i], self.rewards[i]))
                     self.prices[i] = self.prices[i] - self.eta[i]
-                    print self.prices
+                    # print self.prices
             self.a += self.dispatches[i]*self.prices[i]
             self.b += self.dispatches[i]
             self.aveprice = self.a/self.b
             self.rewards = self.expectedReward
-            r += 1 
+            r += 1
             self.x.append(m)
             self.y.append(self.prices[0])
 
-            
+
 class StatisticsOP:
     def __init__(self):
         self.T = 1
@@ -80,7 +80,7 @@ class StatisticsOP:
         self.sigma = sigma
         s = np.random.normal(mu, sigma, 10000)
         self.rand = random.choice(s)
-        return self.rand      
+        return self.rand
     def plus_sigma(self, risk, deltapr):
         self.risk = risk
         self.sigma = self.risk/(1+np.exp(deltapr/self.T))
@@ -89,5 +89,3 @@ class StatisticsOP:
         self.risk = risk
         self.sigma = self.risk/(1+np.exp(-deltapr/self.T))
         return self.sigma
-    
-
